@@ -122,10 +122,6 @@ pages:
 - label: Shopping
   type: list
   buttons: [...]
-
-# Barcode scanner (opens camera)
-- label: Scan
-  type: barcode
 ```
 
 ### Groups
@@ -337,14 +333,6 @@ Opens the iPhone camera for scanning product barcodes (EAN-8, EAN-13, UPC-E, Cod
   action: scanBarcode
 ```
 
-Or add a full barcode scanner page:
-
-```yaml
-pages:
-  - label: Scan
-    type: barcode
-```
-
 ### Forget PIN
 
 Client-side action that clears the saved connection PIN and disconnects.
@@ -546,7 +534,12 @@ pages:
               systemAction: missionControl
 
   - label: Scan
-    type: barcode
+    type: buttons
+    buttons:
+      - id: scan
+        label: Scan Item
+        icon: barcode.viewfinder
+        action: scanBarcode
 ```
 
 ## License
