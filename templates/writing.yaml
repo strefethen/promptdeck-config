@@ -1,0 +1,123 @@
+# PromptDeck — Writing Template
+# Drafting, editing, tone adjustment, and content creation.
+
+version: 1
+
+server:
+  port: 9100
+
+grid:
+  columns: 3
+
+injection:
+  mode: clipboard
+  plainText: true
+  appendNewline: false
+  cooldownMs: 250
+
+pages:
+  - label: Edit
+    type: buttons
+    buttons:
+      - group:
+          label: "Polish"
+          color: "#8B5CF6"
+          buttons:
+            - id: proofread
+              label: Proofread
+              icon: text.magnifyingglass
+              prompt: |
+                Proofread this text for grammar, spelling, and punctuation errors.
+                Fix issues and briefly explain each change.
+
+            - id: concise
+              label: Make Concise
+              icon: scissors
+              prompt: |
+                Make this text more concise without losing meaning.
+                Cut filler words, redundancy, and unnecessary qualifiers.
+
+            - id: clarity
+              label: Clarity
+              icon: sparkles
+              prompt: |
+                Improve the clarity of this text. Simplify complex sentences,
+                fix ambiguous phrasing, and improve flow between ideas.
+
+      - group:
+          label: "Tone"
+          color: "#3B82F6"
+          buttons:
+            - id: formal
+              label: Formal
+              icon: building.columns
+              prompt: |
+                Rewrite this in a professional, formal tone.
+                Suitable for business communication or documentation.
+
+            - id: casual
+              label: Casual
+              icon: face.smiling
+              prompt: |
+                Rewrite this in a friendly, conversational tone.
+                Keep it approachable and natural.
+
+            - id: technical
+              label: Technical
+              icon: gearshape.2
+              prompt: |
+                Rewrite this for a technical audience. Use precise terminology,
+                be specific, and assume the reader has domain expertise.
+
+  - label: Create
+    type: buttons
+    buttons:
+      - group:
+          label: "Draft"
+          color: "#10B981"
+          buttons:
+            - id: outline
+              label: Outline
+              icon: list.number
+              prompt: |
+                Create a structured outline for a document about this topic.
+                Include main sections, subsections, and key points to cover.
+
+            - id: expand
+              label: Expand
+              icon: arrow.up.left.and.arrow.down.right
+              prompt: |
+                Expand on this text. Add supporting details, examples,
+                and deeper explanation while keeping the original voice.
+
+            - id: summarize
+              label: Summarize
+              icon: text.justify.leading
+              prompt: |
+                Summarize this text in 2-3 concise paragraphs.
+                Capture the key points and main argument.
+
+      - group:
+          label: "Transform"
+          color: "#F59E0B"
+          buttons:
+            - id: bullet-points
+              label: Bullets
+              icon: list.bullet
+              prompt: |
+                Convert this text into clear, scannable bullet points.
+                Group related items and use parallel structure.
+
+            - id: email
+              label: Email
+              icon: envelope
+              prompt: |
+                Turn this into a well-structured email. Include a clear
+                subject line, greeting, body, and call to action.
+
+            - id: blog
+              label: Blog Post
+              icon: newspaper
+              prompt: |
+                Rewrite this as an engaging blog post. Add a compelling
+                introduction, clear sections, and a conclusion.

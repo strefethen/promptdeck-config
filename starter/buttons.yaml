@@ -1,0 +1,72 @@
+# PromptDeck — Starter Config
+# Copy to ~/.promptdeck/buttons.yaml
+# Changes are applied automatically — no restart needed.
+
+version: 1
+
+server:
+  port: 9100
+
+grid:
+  columns: 3
+
+injection:
+  mode: clipboard
+  plainText: true
+  appendNewline: false
+  cooldownMs: 250
+
+pages:
+  - label: Prompts
+    type: buttons
+    buttons:
+      - group:
+          label: "Code"
+          color: "#3B82F6"
+          buttons:
+            - id: review
+              label: Review
+              icon: eye
+              prompt: |
+                Review this code for bugs, security issues, and improvements.
+                Be thorough and suggest specific fixes.
+
+            - id: explain
+              label: Explain
+              icon: questionmark.circle
+              prompt: |
+                Explain what this code does in detail.
+                Walk through the logic step by step.
+
+            - id: refactor
+              label: Refactor
+              icon: arrow.triangle.2.circlepath
+              prompt: |
+                Refactor this for readability and maintainability.
+                Explain your changes.
+
+      - group:
+          label: "Write"
+          color: "#8B5CF6"
+          buttons:
+            - id: tests
+              label: Tests
+              icon: checkmark.circle
+              prompt: |
+                Write comprehensive tests for this code.
+                Include edge cases and error conditions.
+
+            - id: docs
+              label: Docs
+              icon: doc.text
+              prompt: |
+                Add comprehensive documentation comments to this code.
+                Include parameter descriptions and return values.
+
+            - id: debug
+              label: Debug
+              icon: ant
+              color: "#EF4444"
+              prompt: |
+                Help me debug this. What could be causing the issue?
+                Suggest diagnostic steps.

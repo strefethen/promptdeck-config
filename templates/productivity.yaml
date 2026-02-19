@@ -1,0 +1,114 @@
+# PromptDeck — Productivity Template
+# App launchers, browser tabs, shortcuts, and daily workflows.
+
+version: 1
+
+server:
+  port: 9100
+
+grid:
+  columns: 3
+
+injection:
+  mode: clipboard
+  plainText: true
+  appendNewline: false
+  cooldownMs: 250
+
+pages:
+  - label: Apps
+    type: buttons
+    buttons:
+      - group:
+          label: "Work"
+          color: "#3B82F6"
+          buttons:
+            - id: mail
+              label: Mail
+              icon: envelope
+              action: launchApp
+              bundleId: com.apple.mail
+
+            - id: calendar
+              label: Calendar
+              icon: calendar
+              action: launchApp
+              bundleId: com.apple.iCal
+
+            - id: notes
+              label: Notes
+              icon: note.text
+              action: launchApp
+              bundleId: com.apple.Notes
+
+      - group:
+          label: "Browse"
+          color: "#10B981"
+          buttons:
+            - id: github
+              label: GitHub
+              icon: globe
+              action: switchTab
+              url: "https://github.com"
+
+            - id: google
+              label: Google
+              icon: magnifyingglass
+              action: switchTab
+              url: "https://google.com"
+
+            - id: docs
+              label: Docs
+              icon: doc.text
+              action: switchTab
+              url: "https://docs.google.com"
+
+      - group:
+          label: "System"
+          color: "#8B5CF6"
+          buttons:
+            - id: finder
+              label: Finder
+              icon: folder
+              action: launchApp
+              bundleId: com.apple.finder
+
+            - id: settings
+              label: Settings
+              icon: gearshape
+              action: launchApp
+              bundleId: com.apple.systempreferences
+
+            - id: activity
+              label: Activity
+              icon: gauge.with.dots.needle.67percent
+              action: launchApp
+              bundleId: com.apple.ActivityMonitor
+
+  - label: Quick
+    type: buttons
+    buttons:
+      - group:
+          label: "AI"
+          color: "#F59E0B"
+          buttons:
+            - id: summarize
+              label: Summarize
+              icon: text.justify.leading
+              prompt: |
+                Summarize this in 2-3 concise bullet points.
+                Focus on the key takeaways.
+
+            - id: action-items
+              label: Actions
+              icon: checklist
+              prompt: |
+                Extract action items from this text.
+                List each with a clear owner and deadline if mentioned.
+
+            - id: reply
+              label: Draft Reply
+              icon: arrowshape.turn.up.left
+              prompt: |
+                Draft a professional reply to this message.
+                Be concise, friendly, and address all points raised.
