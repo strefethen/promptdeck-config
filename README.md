@@ -128,6 +128,42 @@ pages:
   type: barcode
 ```
 
+### Groups
+
+Groups visually cluster buttons together with a shared background tint. Buttons within a group render with connected edges.
+
+```yaml
+buttons:
+  # Standalone button (no group)
+  - id: solo
+    label: Solo Button
+    icon: star
+    prompt: I stand alone.
+
+  # Grouped buttons
+  - group:
+      label: "Code Review"
+      color: "#3B82F6"
+      sortOrder: alpha      # Sort group buttons alphabetically
+      buttons:
+        - id: review
+          label: Review
+          icon: eye
+          prompt: Review this code...
+
+        - id: explain
+          label: Explain
+          icon: questionmark.circle
+          prompt: Explain this code...
+
+        - id: refactor
+          label: Refactor
+          icon: arrow.triangle.2.circlepath
+          prompt: Refactor this code...
+```
+
+Buttons inside a group inherit the group's `color` unless they specify their own.
+
 ---
 
 ## Button Types
@@ -320,44 +356,6 @@ Client-side action that clears the saved connection PIN and disconnects.
   color: "#EF4444"
   action: forgetPin
 ```
-
----
-
-## Groups
-
-Groups visually cluster buttons together with a shared background tint. Buttons within a group render with connected edges.
-
-```yaml
-buttons:
-  # Standalone button (no group)
-  - id: solo
-    label: Solo Button
-    icon: star
-    prompt: I stand alone.
-
-  # Grouped buttons
-  - group:
-      label: "Code Review"
-      color: "#3B82F6"
-      sortOrder: alpha      # Sort group buttons alphabetically
-      buttons:
-        - id: review
-          label: Review
-          icon: eye
-          prompt: Review this code...
-
-        - id: explain
-          label: Explain
-          icon: questionmark.circle
-          prompt: Explain this code...
-
-        - id: refactor
-          label: Refactor
-          icon: arrow.triangle.2.circlepath
-          prompt: Refactor this code...
-```
-
-Buttons inside a group inherit the group's `color` unless they specify their own.
 
 ---
 
