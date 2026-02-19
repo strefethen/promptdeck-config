@@ -333,6 +333,18 @@ Opens the iPhone camera for scanning product barcodes (EAN-8, EAN-13, UPC-E, Cod
   action: scanBarcode
 ```
 
+When you scan a barcode:
+
+1. The host looks up the product name via [UPCitemdb](https://www.upcitemdb.com/)
+2. A **toggle button** is created on the same page with the product name as its label
+3. Scanning the same barcode again **toggles** the checked state (useful for shopping lists)
+4. If the product isn't found, the raw barcode number is used as the label
+
+**Product lookup works out of the box** — the trial API (100 requests/day, no key required) is used by default. For higher limits, add a [UPCitemdb API key](https://www.upcitemdb.com/wp/docs/main):
+
+1. In PromptDeckHost menu bar → **Manage Secrets** (Cmd+Shift+S)
+2. Add a secret named `upcitemdb-api-key`
+
 ### Forget PIN
 
 Client-side action that clears the saved connection PIN and disconnects.
