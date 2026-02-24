@@ -589,6 +589,9 @@ pages:
         action: scanBarcode
 ```
 
+## Prompts
+Check out [jeffreysprompts.com](https://jeffreysprompts.com) for great LLM prompts that will really get you thinking.
+
 ## License
 
 MIT
