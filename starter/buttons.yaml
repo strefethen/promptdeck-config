@@ -120,28 +120,28 @@ pages:
             - type: app
               match: Google Chrome
           buttons:
-            - id: close-tab
+            - id: chrome-close-tab
               label: Close Tab
               icon: xmark.square
               color: "#EF4444"
               action: keystroke
               keystroke: "cmd+w"
 
-            - id: reload
+            - id: chrome-reload
               label: Reload
               icon: arrow.clockwise
               color: "#10B981"
               action: keystroke
               keystroke: "cmd+shift+r"
 
-            - id: prev-tab
+            - id: chrome-prev-tab
               label: "← Tab"
               icon: chevron.left
               color: "#6B7280"
               action: keystroke
               keystroke: "cmd+shift+["
 
-            - id: next-tab
+            - id: chrome-next-tab
               label: "Tab →"
               icon: chevron.right
               color: "#6B7280"
