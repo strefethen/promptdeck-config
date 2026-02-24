@@ -1,0 +1,147 @@
+# PromptDeck — Developer Template
+# Code review, debugging, git workflows, and development tools.
+
+version: 1
+
+server:
+  port: 9100
+
+grid:
+  columns: 3
+
+injection:
+  mode: clipboard
+  plainText: true
+  appendNewline: false
+  cooldownMs: 250
+
+pages:
+  - label: Code
+    type: buttons
+    buttons:
+      - group:
+          label: "Review"
+          color: "#3B82F6"
+          buttons:
+            - id: review
+              label: Review
+              icon: eye
+              prompt: |
+                Review this code for bugs, security issues, and improvements.
+                Be thorough and suggest specific fixes.
+
+            - id: review-pr
+              label: PR Review
+              icon: arrow.triangle.pull
+              prompt: |
+                Review this pull request. Check for correctness, edge cases,
+                naming, and adherence to project conventions. Flag anything
+                that could break in production.
+
+            - id: explain
+              label: Explain
+              icon: questionmark.circle
+              prompt: |
+                Explain what this code does in detail.
+                Walk through the logic step by step.
+
+      - group:
+          label: "Write"
+          color: "#10B981"
+          buttons:
+            - id: tests
+              label: Tests
+              icon: checkmark.circle
+              prompt: |
+                Write comprehensive tests for this code.
+                Include edge cases and error conditions.
+
+            - id: docs
+              label: Docs
+              icon: doc.text
+              prompt: |
+                Add comprehensive documentation comments to this code.
+                Include parameter descriptions and return values.
+
+            - id: refactor
+              label: Refactor
+              icon: arrow.triangle.2.circlepath
+              color: "#F59E0B"
+              prompt: |
+                Refactor this for readability and maintainability.
+                Explain your changes.
+
+      - group:
+          label: "Debug"
+          color: "#EF4444"
+          buttons:
+            - id: debug
+              label: Debug
+              icon: ant
+              prompt: |
+                Help me debug this. What could be causing the issue?
+                Suggest diagnostic steps.
+
+            - id: fix
+              label: Fix
+              icon: wrench
+              prompt: |
+                Fix this bug. Explain the root cause and your fix.
+                Make the smallest change that resolves the issue.
+
+            - id: perf
+              label: Perf
+              icon: gauge.with.dots.needle.67percent
+              prompt: |
+                Analyze this code for performance issues.
+                Suggest optimizations with benchmarks where possible.
+
+  - label: Tools
+    type: buttons
+    buttons:
+      - group:
+          label: "Apps"
+          color: "#6366F1"
+          buttons:
+            - id: terminal
+              label: Terminal
+              icon: terminal
+              action: launchApp
+              bundleId: com.apple.Terminal
+
+            - id: xcode
+              label: Xcode
+              icon: hammer
+              action: launchApp
+              bundleId: com.apple.dt.Xcode
+
+            - id: simulator
+              label: Simulator
+              icon: iphone
+              action: launchApp
+              bundleId: com.apple.iphonesimulator
+
+      - group:
+          label: "Quick"
+          color: "#8B5CF6"
+          buttons:
+            - id: commit-msg
+              label: Commit Msg
+              icon: text.quote
+              prompt: |
+                Write a concise git commit message for these changes.
+                Use conventional commit format. Focus on the "why" not the "what".
+
+            - id: changelog
+              label: Changelog
+              icon: list.bullet.rectangle
+              prompt: |
+                Write a changelog entry for these changes.
+                Group by: Added, Changed, Fixed, Removed.
+
+            - id: readme
+              label: README
+              icon: doc.richtext
+              prompt: |
+                Update the README to reflect these changes.
+                Keep it concise and accurate.

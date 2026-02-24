@@ -1,0 +1,30 @@
+name: Validate YAML
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yq
+        uses: mikefarah/yq@master
+
+      - name: Validate YAML files
+        run: |
+          failed=0
+          for f in $(find . -name '*.yaml' -not -path './.github/*'); do
+            if yq eval '.' "$f" > /dev/null 2>&1; then
+              echo "OK: $f"
+            else
+              echo "FAIL: $f"
+              yq eval '.' "$f"
+              failed=1
+            fi
+          done
+          exit $failed

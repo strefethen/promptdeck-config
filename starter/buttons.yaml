@@ -1,0 +1,664 @@
+# PromptDeck — Starter Config
+# Copy to ~/.promptdeck/buttons.yaml
+# Changes are applied automatically — no restart needed.
+
+version: 1
+
+server:
+  port: 9100
+
+grid:
+  columns: 3
+
+barcodeScanCooldown: 750      # milliseconds between duplicate scans
+
+injection:
+  mode: clipboard
+  plainText: true
+  appendNewline: false
+  cooldownMs: 250
+
+ui:
+  compact: false              # Use default is accessible size layout. set to true for a more compact layout with smaller buttons and less spacing
+
+spaces: {}                    # Enable macOS Spaces window switching (empty object enables the feature)
+
+dock:
+  position: top   # or "bottom"
+  showLabels: false
+
+vscode: {}                    # Enable VS Code window switching (empty object enables the feature)
+
+tabs:
+  safari:
+    title: true
+  chrome:
+    title: true
+
+pages:
+  - label: Buttons
+    buttons:
+      # Only visible when Zoom/FaceTime is frontmost
+      - group:
+          label: "Meeting Controls"
+          color: "#2D8CFF"
+          triggers:
+            - type: app
+              match: zoom.us
+            - type: app
+              match: FaceTime
+          buttons:
+            - id: mute-toggle
+              label: Mute
+              icon: mic.slash.fill
+              color: "#EF4444"
+              action: keystroke
+              keystroke: "cmd+shift+a"    # Zoom's mute toggle
+
+            - id: video-toggle
+              label: Video
+              icon: video.slash.fill
+              color: "#F59E0B"
+              action: keystroke
+              keystroke: "cmd+shift+v"    # Zoom's video toggle
+
+            - id: share-screen
+              label: Share
+              icon: rectangle.on.rectangle
+              color: "#10B981"
+              action: keystroke
+              keystroke: "cmd+shift+s"    # Zoom's share screen
+
+            - id: raise-hand
+              label: Hand
+              icon: hand.raised.fill
+              color: "#8B5CF6"
+              action: keystroke
+              keystroke: "opt+y"          # Zoom's raise hand
+
+      # Only visible when Safari is frontmost
+      - group:
+          label: "Safari"
+          color: "#007AFF"
+          triggers:
+            - type: app
+              match: Safari
+          buttons:
+            - id: close-tab
+              label: Close Tab
+              icon: xmark.square
+              color: "#EF4444"
+              action: keystroke
+              keystroke: "cmd+w"
+
+            - id: reload
+              label: Reload
+              icon: arrow.clockwise
+              color: "#10B981"
+              action: keystroke
+              keystroke: "cmd+r"
+
+            - id: prev-tab
+              label: "← Tab"
+              icon: chevron.left
+              color: "#6B7280"
+              action: keystroke
+              keystroke: "cmd+shift+["
+
+            - id: next-tab
+              label: "Tab →"
+              icon: chevron.right
+              color: "#6B7280"
+              action: keystroke
+              keystroke: "cmd+shift+]"
+
+      # Only visible when Safari is frontmost
+      - group:
+          label: "Chrome"
+          color: "#007AFF"
+          triggers:
+            - type: app
+              match: Google Chrome
+          buttons:
+            - id: close-tab
+              label: Close Tab
+              icon: xmark.square
+              color: "#EF4444"
+              action: keystroke
+              keystroke: "cmd+w"
+
+            - id: reload
+              label: Reload
+              icon: arrow.clockwise
+              color: "#10B981"
+              action: keystroke
+              keystroke: "cmd+shift+r"
+
+            - id: prev-tab
+              label: "← Tab"
+              icon: chevron.left
+              color: "#6B7280"
+              action: keystroke
+              keystroke: "cmd+shift+["
+
+            - id: next-tab
+              label: "Tab →"
+              icon: chevron.right
+              color: "#6B7280"
+              action: keystroke
+              keystroke: "cmd+shift+]"
+
+  # Apple Apps
+  - label: Apps
+    chrome: false
+    buttons:
+      - group:
+          label: "Apple Apps"
+          color: "#1F2937"
+          buttons:
+            - id: notes
+              label: 
+              icon: note.text
+              action: launchApp
+              bundleId: com.apple.Notes
+
+            - id: messages
+              label: 
+              icon: message.fill
+              action: launchApp
+              bundleId: com.apple.MobileSMS
+
+            - id: maps
+              label: 
+              icon: map.fill
+              action: launchApp
+              bundleId: com.apple.Maps
+
+      - group:
+          label: "Apple Apps"
+          color: "#1F2937"
+          buttons:
+            - id: appstore
+              label: 
+              icon: bag.fill
+              action: launchApp
+              bundleId: com.apple.AppStore
+
+            - id: passwords
+              label: 
+              icon: key.fill
+              action: launchApp
+              bundleId: com.apple.Passwords
+
+            - id: shortcuts-app
+              label: 
+              icon: square.stack.3d.up.fill
+              action: launchApp
+              bundleId: com.apple.shortcuts
+
+            - id: safari
+              label: 
+              icon: safari.fill
+              action: launchApp
+              bundleId: com.apple.Safari
+
+            - id: preview
+              label: 
+              icon: photo.fill
+              action: launchApp
+              bundleId: com.apple.Preview
+
+            - id: music
+              label: 
+              icon: music.note
+              action: launchApp
+              bundleId: com.apple.Music
+
+            - id: news
+              label: 
+              icon: newspaper.fill
+              action: launchApp
+              bundleId: com.apple.news
+
+            - id: mail
+              label: 
+              icon: envelope.fill
+              action: launchApp
+              bundleId: com.apple.mail
+
+      - group:
+          label: "Apple Apps"
+          color: "#1F2937"
+          buttons:
+            - id: calculator
+              label: 
+              icon: plusminus.circle.fill
+              action: launchApp
+              bundleId: com.apple.calculator
+
+            - id: calendar
+              label: 
+              icon: calendar
+              action: launchApp
+              bundleId: com.apple.iCal
+
+            - id: reminders
+              label: 
+              icon: checklist
+              action: launchApp
+              bundleId: com.apple.reminders
+
+      - group:
+          label: "Apple Apps"
+          color: "#1F2937"
+          buttons:
+            - id: contacts
+              label: 
+              icon: person.crop.circle.fill
+              action: launchApp
+              bundleId: com.apple.AddressBook
+
+            - id: facetime
+              label: 
+              icon: video.fill
+              action: launchApp
+              bundleId: com.apple.FaceTime
+
+            - id: findmy
+              label: 
+              icon: location.circle.fill
+              action: launchApp
+              bundleId: com.apple.findmy
+
+            - id: photos
+              label: 
+              icon: photo.on.rectangle.angled
+              action: launchApp
+              bundleId: com.apple.Photos
+
+            - id: podcasts
+              label: 
+              icon: mic.fill
+              action: launchApp
+              bundleId: com.apple.podcasts
+
+            - id: siri
+              label: 
+              icon: waveform.circle.fill
+              action: launchApp
+              bundleId: com.apple.siri
+
+            - id: weather
+              label:
+              icon: cloud.sun.fill
+              action: launchApp
+              bundleId: com.apple.weather
+
+  - label: Groceries
+    chrome: false
+    type: list
+    sortOrder: alpha
+    triggers:
+      #- type: geo
+      #  lat: 37.0472129
+      #  lng: -122.0297093
+      #  radius: 100    
+    buttons:
+      - group:
+          label: Grocery Store Name Goes Here
+          color: "#6B7280"
+          buttons:
+            - id: scan_grocery
+              label: Barcode Scanner
+              icon: barcode.viewfinder
+              action: scanBarcode
+              color: "#4CAF50"
+              enabled: true
+            - id: show-checked
+              label: "Show Checked Items Only"
+              icon: "line.3.horizontal.decrease.circle"
+              action: toggleChecked
+              color: "#4CAF50"
+              checked: false
+      - group:
+          label: Deli
+          color: "#E3A857"
+          buttons: 
+            - id: grocery_cheese_platter
+              label: Cheese Platter
+              icon: bag
+              action: toggle
+              checked: false
+
+      - group:
+          label: Frozen Foods
+          color: "#B0C4DE"
+          buttons: 
+            - id: grocery_ice_cream
+              checked: false
+              label: Ice Cream
+              icon: barcode.viewfinder
+              action: toggle
+
+      - group:
+          label: Dairy & Lunch Meats
+          color: "#FCE883"
+          buttons: 
+            - id: grocery_0717544205197
+              label: Organic Reduced Fat Milk
+              icon: bag.fill
+              action: toggle
+              checked: false
+              metadata:
+                barcode: "0717544205197"
+                source: barcode_scan
+            - id: grocery_eggs
+              label: Eggs (get at Costco < $)
+              icon: barcode.viewfinder
+              action: toggle
+      - group:
+          label: Snacks
+          color: "#FF6347"
+          buttons: 
+            - id: grocery_cookies
+              label: Cookies
+              icon: barcode.viewfinder
+              action: toggle
+
+      - group:
+          label: Alcohol
+          color: "#722F37"
+          buttons: 
+            - id: grocery_margarita_mix
+              label: Margarita Mix
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_lime_juice
+              label: Lime Juice
+              icon: barcode.viewfinder
+              action: toggle        
+
+      - group:
+          label: Coffee & Tea
+          color: "#4B3621"
+          buttons: 
+            - id: grocery_whole_bean_coffee
+              label: Whole Bean Coffee
+              icon: barcode.viewfinder
+              action: toggle
+
+      - group:
+          label: Bread & Cereal
+          color: "#D9B382"
+          buttons: 
+            - id: grocery_raisin_bran_crunch
+              label: Raisin Bran Crunch
+              icon: barcode.viewfinder
+              action: toggle
+      - group:
+          label: Soup Isle
+          color: "#E49B0F"
+          buttons: 
+            - id: grocery_tomato_soup
+              label: Tomato Soup
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_chicken_noodle_soup
+              label: Chicken Noodle Soup
+              icon: barcode.viewfinder
+              action: toggle
+
+      - group:
+          label: Spices
+          color: "#E49B0F"
+          buttons: 
+            - id: grocery_0052100004280
+              label: McCormick Kosher Chili Powder  2.5 oz Bottle
+              icon: bag.fill
+              color: "#10B981"
+              action: toggle
+              checked: false
+              metadata:
+                barcode: "0052100004280"
+                source: barcode_scan
+
+      - group:
+          label: Household & Cleaning
+          color: "#00BFFF"
+          buttons:
+            - id: grocery_0041911000567
+              label: 23 oz. Glass Cleaner
+              icon: bag.fill
+              action: toggle
+              checked: false
+              metadata:
+                barcode: "0041911000567"
+                source: barcode_scan
+
+      - group:
+          label: Baking
+          color: "#E5E4E2"
+          buttons: 
+            - id: grocery_0196005708338
+              label: Crisco Pure Vegetable Cooking Oil  40 fl oz
+              icon: bag.fill
+              action: toggle
+              checked: false
+              metadata:
+                barcode: "0196005708338"
+                source: barcode_scan
+
+      - group:
+          label: Meats
+          color: "#6B7280"
+          buttons:
+            - id: grocery_ground_beef
+              label: Ground Beef
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_chicken_thighs
+              checked: false
+              label: Chicken Thighs (boneless, skinless)
+              icon: barcode.viewfinder
+              action: toggle
+
+      - group:
+          label: Produce
+          color: "#4E7C32"
+          buttons:
+            - id: grocery_basil
+              label: Basil
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_broccoli_organic
+              checked: false
+              label: "🥦 Broccoli organic"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_cauliflower
+              label: Cauliflower
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_apples_envy_sugar_bee_cosmic
+              label: "🍎 Apples Envy, Sugar Bee, Cosmic ❤️"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_grannie_smith_apples
+              label: Grannie Smith apples
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_oranges
+              label: "🍊 Oranges"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_bananas
+              checked: false
+              label: "🍌 Bananas"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_strawberries
+              label: "🍓 Strawberries"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_blueberries
+              label: "🫐 Blueberries"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_key_limes
+              label: "🍋‍🟩 Key limes"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_raspberries
+              label: Raspberries
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_nectarines
+              label: Nectarines
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_christmas_grapes
+              label: "🍇 Christmas Grapes"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_pineapple
+              label: "🍍 Pineapple"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_raisins
+              label: Raisins
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_mild_banana_pepper_rings
+              label: Mild banana pepper rings
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_veggie_tray
+              checked: false
+              label: Veggie tray
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_taco_lettuce
+              checked: false
+              label: "🥬 Taco lettuce"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_green_beans
+              checked: false
+              label: Green Beans
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_avocados
+              checked: false
+              label: "🥑 Avocados"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_romaine_lettuce
+              label: Romaine lettuce
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_tomatoes
+              label: "🍅 Tomatoes"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_mini_potatoes
+              label: Mini Potatoes
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_potatoes
+              label: "🥔 Potatoes"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_bell_peppers
+              label: "🫑 Bell Peppers"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_jalapeno_peppers_green
+              label: "🌶️ Jalapeño peppers (green)"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_pre_made_salads
+              label: Pre-made Salads
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_cucumbers
+              label: "🥒 Cucumbers"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_baby_spinach_bag
+              label: Baby Spinach bag
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_carrots
+              label: "🥕 Carrots"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_yellow_onion
+              label: "🧅 Yellow Onion"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_purple_onion
+              label: Purple onion
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_white_onion
+              label: White onion
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_garlic
+              label: Garlic
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_snap_peas
+              label: Snap peas
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_mini_tomatoes
+              label: "🍅 Mini tomatoes"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_dill
+              label: Dill
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_fresh_rosemary
+              label: Fresh Rosemary
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_limes
+              label: "🍋‍🟩 Limes"
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_cilantro
+              label: Cilantro
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_dates
+              label: Medjool Dates
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_kiwi
+              label: Kiwi
+              icon: barcode.viewfinder
+              action: toggle
+            - id: grocery_0046567720432
+              label: Baby Red Potatoes
+              icon: bag.fill
+              color: #10B981
+              action: toggle
+              checked: false
+              metadata:
+                barcode: "0046567720432"
+                source: barcode_scan
+
+      - group:
+          label: Condiments/Canned Stuff
+          color: "#8E9294"
+          buttons: 
+            - id: grocery_01389900
+              label: Tomato Ketchup
+              icon: bag.fill
+              action: toggle
+              checked: false
+              metadata:
+                barcode: "01389900"
+                source: barcode_scan
