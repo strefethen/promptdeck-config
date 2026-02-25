@@ -36,6 +36,232 @@ tabs:
     title: true
 
 pages:
+  - label: Claude Official Plugins
+    # This section includes buttons that trigger official plugins developed by Anthropic for Claude.
+    # https://github.com/anthropics/claude-plugins-official
+    type: list
+    chrome: false
+    sortOrder: alpha
+    buttons:
+      - group:
+          label: Claude Code Tools
+          color: "#4ECDC4"
+          # triggers:
+          #   - type: app
+          #     match: iTerm
+          #   - type: app
+          #     match: Ghostty
+          buttons:
+            - id: code-review
+              label: Code Review
+              icon: magnifyingglass
+              color: "#4ECDC4"
+              prompt: |
+                use the code review agent to {{what to review}}
+            - id: code-simplifier
+              label: Code Simplifier
+              icon: wand.and.rays
+              color: "#4ECDC4"
+              prompt: |
+                use the code simplifier agent to {{what to simplify}}
+            - id: architecture-review
+              label: Architecture Review
+              icon: building.columns
+              color: "#4ECDC4"
+              prompt: |
+                use the code-architect agent {{what to focus on}}
+            - id: code-exploration
+              label: Code Exploration
+              icon: binoculars
+              color: "#4ECDC4"
+              prompt: |
+                use code exploration to {{what to focus on}}
+      - group:
+          label: pr-review-toolkit
+          color: "#FF6B6B"
+          buttons:
+            - id: prt-code-reviewer
+              label: Code Reviewer - Used proactively after writing or modifying code
+              icon: checkmark.circle
+              color: "#FF6B6B"
+              prompt: |
+                use the code reviewer writer agent to {{what to write}}
+            - id: prt-silent-failure-hunter
+              label: Silent Failure Hunter - after completing a logical chunk of work that involves error handling, catch blocks, fallback logic, or any code that could potentially suppress errors
+              icon: ant
+              color: "#FF6B6B"
+              prompt: |
+                use the code reviewer to {{what to review}}
+            - id: prt-code-simplifier
+              label: Code Simplifier - when code has been written or modified and needs to be simplified for clarity, consistency, and maintainability while preserving all functionality
+              icon: scissors
+              color: "#FF6B6B"
+              prompt: |
+                use the code reviewer to {{what to review}}
+            - id: prt-comment-analyzer
+              label: Comment Analyzer - to analyze code comments for accuracy, completeness, and long-term maintainability
+              icon: text.bubble
+              color: "#FF6B6B"
+              prompt: |
+                use the code reviewer to {{what to review}}
+            - id: prt-type-design-analyzer
+              label: Type Design Analyzer - need expert analysis of type design in your codebase
+              icon: textformat
+              color: "#FF6B6B"
+              prompt: |
+                use the code reviewer to {{what to review}}
+      - group:
+          label: commit-commands
+          color: "#F4D03F"
+          buttons:
+            - id: cc-commit
+              label: Commit - stage and commit current changes with an appropriate message
+              icon: checkmark.square
+              color: "#F4D03F"
+              prompt: |
+                /commit
+            - id: cc-commit-push-pr
+              label: Commit, Push & PR - create a commit, push the branch, and open a pull request
+              icon: paperplane
+              color: "#F4D03F"
+              prompt: |
+                /commit-push-pr
+            - id: cc-clean-gone
+              label: Clean Gone Branches - remove local branches deleted on remote, including associated worktrees
+              icon: xmark.bin
+              color: "#F4D03F"
+              prompt: |
+                /clean_gone
+      - group:
+          label: frontend-design
+          color: "#EC7063"
+          buttons:
+            - id: fd-design
+              label: Frontend Design - create distinctive, production-grade frontend interfaces that avoid generic AI aesthetics
+              icon: paintbrush.pointed
+              color: "#EC7063"
+              prompt: |
+                /frontend-design {{what to build}}
+      - group:
+          label: ralph-loop
+          color: "#AED6F1"
+          buttons:
+            - id: rl-start
+              label: Start Ralph Loop - begin an iterative loop that feeds the same prompt back for continuous improvement
+              icon: repeat
+              color: "#AED6F1"
+              prompt: |
+                /ralph-loop {{prompt and options}}
+            - id: rl-cancel
+              label: Cancel Ralph Loop - stop the active Ralph Loop iteration
+              icon: stop.circle
+              color: "#AED6F1"
+              prompt: |
+                /cancel-ralph
+            - id: rl-help
+              label: Ralph Loop Help - explain Ralph Loop plugin and available commands
+              icon: questionmark.circle
+              color: "#AED6F1"
+              prompt: |
+                /ralph-loop:help
+  - label: Claude Code Tools & Developer Resources
+    type: list
+    chrome: false
+    sortOrder: alpha
+    buttons:
+      - group:
+          label: claude-md-management
+          color: "#AF7AC5"
+          buttons:
+            - id: cmd-revise
+              label: Revise CLAUDE.md - update CLAUDE.md with learnings and discoveries from this session
+              icon: doc.text.fill
+              color: "#AF7AC5"
+              prompt: |
+                /revise-claude-md
+            - id: cmd-improver
+              label: Audit & Improve CLAUDE.md - scan all CLAUDE.md files, evaluate quality, and make targeted improvements
+              icon: doc.text.magnifyingglass
+              color: "#AF7AC5"
+              prompt: |
+                /claude-md-improver
+      - group:
+          label: agent-sdk-dev
+          color: "#E67E22"
+          buttons:
+            - id: asd-new-app
+              label: New Agent SDK App - scaffold and set up a new Claude Agent SDK application
+              icon: plus.app
+              color: "#E67E22"
+              prompt: |
+                /new-sdk-app {{project name}}
+            - id: asd-verify-ts
+              label: Verify TS Agent SDK - verify a TypeScript Agent SDK app is properly configured and follows best practices
+              icon: checkmark.seal
+              color: "#E67E22"
+              prompt: |
+                use the agent-sdk-verifier-ts agent to verify {{what to verify}}
+            - id: asd-verify-py
+              label: Verify Python Agent SDK - verify a Python Agent SDK app is properly configured and follows best practices
+              icon: checkmark.seal
+              color: "#E67E22"
+              prompt: |
+                use the agent-sdk-verifier-py agent to verify {{what to verify}}
+      - group:
+          label: hookify
+          color: "#58D68D"
+          buttons:
+            - id: hk-hookify
+              label: Create Hooks - create hooks to prevent unwanted behaviors from conversation analysis or explicit instructions
+              icon: link
+              color: "#58D68D"
+              prompt: |
+                /hookify {{behavior to prevent}}
+            - id: hk-analyzer
+              label: Analyze Conversation - scan conversation transcript to find behaviors worth preventing with hooks
+              icon: waveform
+              color: "#58D68D"
+              prompt: |
+                use the conversation-analyzer agent to find problematic behaviors in this session
+      - group:
+          label: plugin-dev
+          color: "#5DADE2"
+          buttons:
+            - id: pd-create
+              label: Create Plugin - guided end-to-end plugin creation with component design, implementation, and validation
+              icon: shippingbox
+              color: "#5DADE2"
+              prompt: |
+                /create-plugin {{plugin description}}
+            - id: pd-agent-creator
+              label: Create Agent - generate an autonomous agent for a plugin from a description of needed functionality
+              icon: person.badge.plus
+              color: "#5DADE2"
+              prompt: |
+                use the agent-creator agent to create {{agent description}}
+            - id: pd-validator
+              label: Validate Plugin - check plugin structure, verify files are correct, and catch issues before publishing
+              icon: checkmark.shield
+              color: "#5DADE2"
+              prompt: |
+                use the plugin-validator agent to validate {{what to validate}}
+            - id: pd-skill-reviewer
+              label: Review Skill - review skill quality, check description effectiveness, and ensure best practices
+              icon: star
+              color: "#5DADE2"
+              prompt: |
+                use the skill-reviewer agent to review {{what to review}}
+      - group:
+          label: skill-creator
+          color: "#D7BDE2"
+          buttons:
+            - id: sc-create
+              label: Create Skill - create new skills, modify existing ones, run evals, and optimize triggering accuracy
+              icon: wand.and.stars
+              color: "#D7BDE2"
+              prompt: |
+                help me create a skill for {{what the skill does}}
+
   - label: Buttons
     buttons:
       # Only visible when Zoom/FaceTime is frontmost
