@@ -85,31 +85,37 @@ pages:
               icon: checkmark.circle
               color: "#FF6B6B"
               prompt: |
-                use the code reviewer writer agent to {{what to write}}
+                use the code reviewer agent to {{what to write}}
             - id: prt-silent-failure-hunter
               label: Silent Failure Hunter - after completing a logical chunk of work that involves error handling, catch blocks, fallback logic, or any code that could potentially suppress errors
               icon: ant
               color: "#FF6B6B"
               prompt: |
-                use the code reviewer to {{what to review}}
+                use the silent failure hunter
             - id: prt-code-simplifier
               label: Code Simplifier - when code has been written or modified and needs to be simplified for clarity, consistency, and maintainability while preserving all functionality
               icon: scissors
               color: "#FF6B6B"
               prompt: |
-                use the code reviewer to {{what to review}}
+                use the code simplifier to {{what to simplify}}
             - id: prt-comment-analyzer
               label: Comment Analyzer - to analyze code comments for accuracy, completeness, and long-term maintainability
               icon: text.bubble
               color: "#FF6B6B"
               prompt: |
-                use the code reviewer to {{what to review}}
+                use the comment analyzer to {{what to analyze}}
+            # - id: prt-pr-test-analyzer
+            #   label: PR Test Analyzer - to review a pull request for test coverage quality and completeness
+            #   icon: pencil.and.outline
+            #   color: "#FF6B6B"
+            #   prompt: |
+            #     use the test analyzer to {{what to review}}
             - id: prt-type-design-analyzer
               label: Type Design Analyzer - need expert analysis of type design in your codebase
               icon: textformat
               color: "#FF6B6B"
               prompt: |
-                use the code reviewer to {{what to review}}
+                use the type design analyzer to {{what to analyze}}
       - group:
           label: commit-commands
           color: "#F4D03F"
@@ -164,11 +170,84 @@ pages:
               color: "#AED6F1"
               prompt: |
                 /ralph-loop:help
+      - group:
+          label: Swift Tools
+          color: "#F05138"
+          buttons:
+            - id: st-dead-code
+              label: Dead Code Finder - scan Swift files for potentially unused functions, types, and properties
+              icon: scissors
+              color: "#F05138"
+              prompt: |
+                use the swift-dead-code-finder agent to find unused code in {{target path or scope}}
+            - id: st-simplifier
+              label: Swift Simplifier - systematically simplify Swift/SwiftUI code for clarity and maintainability
+              icon: wand.and.rays
+              color: "#F05138"
+              prompt: |
+                use the swift-simplifier agent to simplify {{target path or scope}}
+            - id: st-concurrency
+              label: Swift Concurrency - expert guidance on async/await, actors, Sendable, MainActor, and Swift 6 migration
+              icon: arrow.triangle.2.circlepath
+              color: "#F05138"
+              prompt: |
+                /swift-concurrency {{concurrency question or code to review}}
+            - id: st-hig
+              label: SwiftUI HIG - apply Apple Human Interface Guidelines to views, layouts, forms, and navigation
+              icon: ruler
+              color: "#F05138"
+              prompt: |
+                apply SwiftUI HIG guidelines to {{view or component}}
+            - id: st-greenlight
+              label: Greenlight - pre-submission compliance scan for App Store rejection risks
+              icon: checkmark.seal
+              color: "#F05138"
+              prompt: |
+                run a greenlight App Store compliance scan on {{target app or files}}
+      - group:
+          label: Architecture & Performance
+          color: "#3498DB"
+          buttons:
+            - id: ap-architect
+              label: Fullstack Architect - expert guidance on system design, APIs, databases, infrastructure, and cross-stack debugging
+              icon: building.columns
+              color: "#3498DB"
+              prompt: |
+                use the fullstack-architect agent to {{architecture question or design task}}
+            - id: ap-optimize
+              label: Extreme Optimization - profile bottlenecks and optimize TS/Node/React/Next.js/SQLite/Redis performance
+              icon: bolt
+              color: "#3498DB"
+              prompt: |
+                run extreme optimization on {{what to optimize}}
+
   - label: Claude Code Tools & Developer Resources
     type: list
     chrome: false
     sortOrder: alpha
     buttons:
+      - group:
+          label: Project Tools
+          color: "#1ABC9C"
+          buttons:
+            - id: pt-triage
+              label: BV Triage - graph-aware project triage to analyze dependencies, health, and find best next work items
+              icon: list.clipboard
+              color: "#1ABC9C"
+              prompt: |
+                run bv-triage to analyze project health and find the best next work items
+            - id: pt-cass
+              label: Cass Search - search past Claude, Codex, Cursor, Gemini, and Aider sessions for previous solutions
+              icon: clock.arrow.circlepath
+              color: "#1ABC9C"
+              prompt: |
+                use cass-search to find {{what to search for}} in past agent sessions
+            - id: pt-visual
+              label: Visual Explainer - generate a styled HTML page to visually explain systems, diffs, plans, or data
+              icon: rectangle.3.group
+              color: "#1ABC9C"
+              prompt: |
+                create a visual HTML explanation of {{topic or system}}
       - group:
           label: claude-md-management
           color: "#AF7AC5"
