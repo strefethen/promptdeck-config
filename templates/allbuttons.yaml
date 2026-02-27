@@ -1,0 +1,220 @@
+pages:
+  - label: All Buttons
+    type: buttons
+    chrome: false
+    buttons:
+      - id: test-prompt
+        label: Prompt
+        icon: doc.text.magnifyingglass
+        prompt: |
+          This is a short Prompt
+      - id: test-prompt-templates
+        label: Template
+        icon: doc.text.magnifyingglass
+        prompt: |
+          Short promppt with a {{template}}
+      - id: test-prompt-1
+        label: Prompt with color
+        icon: doc.text.magnifyingglass
+        color: "#3B82F6"
+        prompt: |
+          A short prompt
+      - id: test-forget
+        label: Forget
+        icon: arrow.uturn.backward
+        color: "#FF453A"
+        action: forgetPin
+      - id: test-chain
+        label: Deploy
+        icon: rocket
+        color: "#10B981"
+        action: chain
+        steps:
+          - buttonId: test-prompt
+            delay: 1000           # ms to wait after this step
+          - buttonId: test-prompt-1
+            delay: 500
+        onError: stop              # "stop" (default) or "skip"
+      - id: test-keystroke
+        label: Undo
+        icon: arrow.uturn.backward
+        color: "#F97316"
+        action: keystroke
+        keystroke: "cmd+z"
+      - id: test-launchapp
+        label: Lauch Aapp
+        icon: plus.forwardslash.minus
+        color: "#FF9500"
+        action: launchApp
+        bundleId: com.apple.calculator
+      - id: test-launchapp-nolabel
+        icon: plus.forwardslash.minus
+        action: launchApp
+        bundleId: com.apple.calculator
+      # Simple GET request
+      - id: test-restApi
+        label: REST API
+        icon: "arrow.down.circle"
+        color: "#10B981"
+        action: restApi
+        httpMethod: GET
+        httpURL: https://httpbin.org/get
+      - id: test-restapi2
+        label: Deploy
+        icon: arrow.up.circle.fill
+        color: "#10B981"
+        action: restApi
+        httpMethod: POST
+        httpURL: https://api.example.com/deploy
+        httpHeaders:
+          Authorization: "Bearer YOUR_TOKEN"
+          Content-Type: "application/json"
+        httpBody: '{"branch": "main", "environment": "production"}'
+        timeoutSeconds: 30
+
+      # Run on iPhone (default) — great for Apple TV Remote actions
+      - id: test-shortcut
+        label: Play/Pause
+        icon: playpause.fill
+        color: "#4ECDC4"
+        action: runShortcut
+        shortcut: "Play/Pause Apple TV"
+        target: phone           # Runs on your iPhone (default)
+
+      # Run on Mac — for Mac-specific automations
+      - id: test-shortcut1
+        label: Dark Mode
+        icon: moon.fill
+        color: "#1C1C1E"
+        action: runShortcut
+        shortcut: "Toggle Dark Mode"
+        target: host            # Runs on your Mac
+
+      - id: test-upc
+        label: Scan UPC         # Opens the camera to scan QR codes or barcodes — useful for quick data entry, product lookups, or URL shortcuts:
+        icon: barcode.viewfinder
+        color: "#F59E0B"
+        action: scanBarcode
+
+      - id: test-qr
+        label: QR Code          # Opens the camera to scan QR codes or barcodes — useful for quick data entry, product lookups, or URL shortcuts:
+        icon: qrcode.viewfinder
+        color: "#8B5CF6"
+        action: scanBarcode
+
+      - id: test-switchtab
+        label: GitHub           # Finds and switches to a browser tab matching a URL pattern — even if it's buried in another window or Space
+        icon: safari
+        color: "#24292E"
+        action: switchTab
+        url: github.com/myrepo
+        urlMatch: contains     # contains (default), exact, or startsWith
+
+      - group:
+          label: "More System Actions"
+          color: "#6B7280"
+          buttons:
+            - id: test-system-action
+              label: Mission
+              icon: rectangle.3.group
+              color: "#6B7280"
+              action: systemAction
+              systemAction: missionControl
+
+            - id: test-systemaction1
+              label: Desktop
+              icon: desktopcomputer
+              color: "#6B7280"
+              action: systemAction
+              systemAction: appExpose
+            - id: test-systemaction2
+              label: Desktop
+              icon: rocket
+              color: "#6B7280"
+              action: systemAction
+              systemAction: launchpad
+
+            - id: test-systemaction3
+              label: Desktop
+              icon: desktopcomputer
+              color: "#6B7280"
+              action: light
+              systemAction: spotlight
+
+            - id: test-systemaction4
+              label: Desktop
+              icon: lock
+              color: "#6B7280"
+              action: systemAction
+              systemAction: lockScreen
+
+            - id: test-systemaction5
+              label: Desktop
+              icon: notification
+              color: "#6B7280"
+              action: systemAction
+              systemAction: notificationCenter
+      - group:
+          label: Switch Tabs
+          color: "#1F2937"
+          buttons:
+            - id: test-switchtab1
+              label: Cronicle
+              icon: clock
+              color: "#1F2937"
+              action: switchTab
+              url: "google.com"
+              urlMatch: contains
+            - id: test-switchtab2
+              label: Cronicle
+              icon: clock
+              color: "#1F2937"
+              action: switchTab
+              url: "google.com"
+              urlMatch: exact
+            - id: test-switchtab3
+              label: Cronicle
+              icon: clock
+              color: "#1F2937"
+              action: switchTab
+              url: "google.com"
+              urlMatch: startsWith
+
+      - id: test-toggleChecked
+        label: Toggle Checked
+        icon: "line.3.horizontal.decrease.circle"
+        action: toggleChecked
+        color: "#4CAF50"
+        checked: false
+      - id: test-checked
+        label: Check
+        icon: bag
+        action: toggle
+        checked: false
+      - id: test-env
+        label: $env{HOST}
+        icon: drop.fill
+        color: "#0000FF"
+        action: toggle
+      - id: test-secret
+        label: $secret{SECRET}
+        icon: drop.fill
+        color: "#0000FF"
+        action: toggle
+      - id: test-dictate
+        label: Dictate
+        icon: waveform
+        color: "#EF4444"
+        action: dictation    
+        silenceTimeout: 2.0 # seconds of silence before auto-submitting
+
+      # Speaks the response (default output mode)
+      - id: test-ai
+        label: Explain
+        icon: eye
+        action: ai
+        prompt: "Explain what's on my screen in plain English"
+        output: speak
+        context:
+          - screen
+          - app
